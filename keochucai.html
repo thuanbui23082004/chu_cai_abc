@@ -73,7 +73,6 @@
       overflow-x: hidden;
       -webkit-user-select: none;
       user-select: none;
-      touch-action: none;
     }
 
     body {
@@ -243,6 +242,10 @@
       display: none !important;
     }
 
+    #pg-game {
+      touch-action: none; /* Ngăn cuộn trang khi đang kéo thả chữ */
+    }
+
     /* ================================================================
    TRANG CÀI ĐẶT
    ================================================================ */
@@ -253,6 +256,9 @@
       flex: 1;
       width: 100%;
       padding: 16px;
+      overflow-y: auto;
+      max-height: 100vh;
+      -webkit-overflow-scrolling: touch;
     }
 
     .setup-card {
