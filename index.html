@@ -31,6 +31,7 @@
       /* Giỏ */
       --basket-a: linear-gradient(145deg, #f5c87a, #e6a54a);
       --basket-b: linear-gradient(145deg, #8fdda0, #5fc06f);
+      --basket-c: linear-gradient(145deg, #a8dcf0, #5da0c0);
       /* Chữ */
       --text-dark: #3b3b5c;
       --text-sub: #7c7c9a;
@@ -766,6 +767,12 @@
       color: #1e5e1e;
     }
 
+    .bsk-c {
+      background: var(--basket-c);
+      border: 3px solid #488cb0;
+      color: #1a4e6e;
+    }
+
     .bsk-letter {
       font-size: 2.8rem;
       font-weight: 800;
@@ -814,6 +821,21 @@
     .bsk-b .bsk-deco:nth-child(3) {
       bottom: 8px;
       left: 10px;
+    }
+
+    .bsk-c .bsk-deco:nth-child(1) {
+      top: -14px;
+      left: 14px;
+    }
+
+    .bsk-c .bsk-deco:nth-child(2) {
+      top: -12px;
+      right: 12px;
+    }
+
+    .bsk-c .bsk-deco:nth-child(3) {
+      bottom: 8px;
+      right: 10px;
     }
 
     .bsk.hl {
@@ -1251,17 +1273,17 @@
       }
 
       .bsk {
-        width: 130px;
-        min-height: 95px;
+        width: 95px;
+        min-height: 85px;
         border-radius: 20px 20px 36px 36px;
       }
 
       .bsk-letter {
-        font-size: 2rem;
+        font-size: 1.8rem;
       }
 
       .baskets-row {
-        gap: 14px;
+        gap: 10px;
       }
 
       .game-title {
@@ -1315,8 +1337,8 @@
       }
 
       .bsk {
-        width: 145px;
-        min-height: 95px;
+        width: 120px;
+        min-height: 90px;
         border-radius: 22px 22px 40px 40px;
       }
 
@@ -1325,7 +1347,7 @@
       }
 
       .baskets-row {
-        gap: 18px;
+        gap: 12px;
       }
 
       .game-title {
@@ -1460,28 +1482,31 @@
       <div class="setup-card">
         <span class="emoji-big">🎓</span>
         <h1>Luyện Chữ Cái Tiếng Việt</h1>
-        <p class="sub">Chọn 2 chữ cái để tạo trò chơi cho bé</p>
+        <p class="sub">Chọn 3 chữ cái để tạo trò chơi cho bé</p>
         <div class="sel-row">
           <div class="sel-group">
-            <label for="selA">Chữ thứ nhất</label>
+            <label for="selA">Chữ 1</label>
             <select id="selA" class="sel-box"></select>
           </div>
           <span class="vs-sym">–</span>
           <div class="sel-group">
-            <label for="selB">Chữ thứ hai</label>
+            <label for="selB">Chữ 2</label>
             <select id="selB" class="sel-box"></select>
+          </div>
+          <span class="vs-sym">–</span>
+          <div class="sel-group">
+            <label for="selC">Chữ 3</label>
+            <select id="selC" class="sel-box"></select>
           </div>
         </div>
         <div class="pair-sec">
-          <p>💡 Các cặp chữ hay nhầm:</p>
+          <p>💡 Các nhóm chữ hay nhầm:</p>
           <div class="pair-btns" id="pair-btns">
-            <button class="pair-b" data-a="e" data-b="ê">e – ê</button>
-            <button class="pair-b" data-a="o" data-b="ô">o – ô</button>
-            <button class="pair-b" data-a="ô" data-b="ơ">ô – ơ</button>
-            <button class="pair-b" data-a="a" data-b="ă">a – ă</button>
-            <button class="pair-b" data-a="ă" data-b="â">ă – â</button>
-            <button class="pair-b" data-a="u" data-b="ư">u – ư</button>
-            <button class="pair-b" data-a="d" data-b="đ">d – đ</button>
+            <button class="pair-b" data-a="a" data-b="ă" data-c="â">a – ă – â</button>
+            <button class="pair-b" data-a="o" data-b="ô" data-c="ơ">o – ô – ơ</button>
+            <button class="pair-b" data-a="e" data-b="ê" data-c="a">e – ê – a</button>
+            <button class="pair-b" data-a="u" data-b="ư" data-c="n">u – ư – n</button>
+            <button class="pair-b" data-a="b" data-b="d" data-c="đ">b – d – đ</button>
           </div>
         </div>
         <p id="err" class="err-msg"></p>
@@ -1502,7 +1527,7 @@
   <div id="pg-game" class="page">
     <!-- Header -->
     <div class="game-hdr">
-      <h1 class="game-title" id="g-title">TÌM ĐÚNG <span class="hl">e</span> – <span class="hl">ê</span></h1>
+      <h1 class="game-title" id="g-title">TÌM ĐÚNG <span class="hl">e</span>, <span class="hl">ê</span> VÀ <span class="hl">a</span></h1>
       <div class="hdr-right">
         <div class="star-badge"><span class="ic">⭐</span><span id="s-cur">0</span>/<span id="s-tot">6</span></div>
         <button class="ib" id="btn-mute" title="Bật/tắt âm thanh">🔈</button>
@@ -1528,6 +1553,13 @@
           <span class="bsk-deco">🦋</span>
           <span class="bsk-letter" id="bsk-b-lbl">ê</span>
           <span class="bsk-cnt" id="bsk-b-cnt"></span>
+        </div>
+        <div class="bsk bsk-c" id="bsk-c">
+          <span class="bsk-deco">🌼</span>
+          <span class="bsk-deco">🍄</span>
+          <span class="bsk-deco">🐝</span>
+          <span class="bsk-letter" id="bsk-c-lbl">a</span>
+          <span class="bsk-cnt" id="bsk-c-cnt"></span>
         </div>
       </div>
     </div>
@@ -1576,9 +1608,9 @@
 
     // ======================== HẰNG SỐ ========================
     const TOTAL_ROUNDS = 20;   // Tổng số vòng chơi
-    const TARGET_MIN = 4;    // Số chữ A+B tối thiểu
-    const TARGET_MAX = 6;    // Số chữ A+B tối đa
-    const DISTRACTOR_COUNT = 10;   // Chữ gây nhiễu
+    const TARGET_MIN = 6;    // Số chữ tối thiểu
+    const TARGET_MAX = 9;    // Số chữ tối đa
+    const DISTRACTOR_COUNT = 15;   // Chữ gây nhiễu
     const TRANSITION_MS = 2000; // Thời gian chuyển vòng
 
     // Bảng chữ cái tiếng Việt
@@ -1604,14 +1636,14 @@
     const MFACE = { normal: '🐱', happy: '😺', sad: '😿', dance: '🙀', celeb: '😻' };
 
     // ======================== TRẠNG THÁI ========================
-    let chA = '', chB = '';
+    let chA = '', chB = '', chC = '';
     let curRound = 0, totalStars = 0;
     let rData = [];
     let muted = false;
     let audioCtx = null;
     let dragEl = null, dragOX = 0, dragOY = 0;
     let rErrors = 0, rErrDet = [], rRemain = 0, rActive = false;
-    let colA = 0, colB = 0;
+    let colA = 0, colB = 0, colC = 0;
 
     // Âm thanh MP3
     const bgMusic = new Audio('nhacnen.mp3');
@@ -1643,8 +1675,9 @@
       if (p.get('mode') === 'game') {
         const a = (p.get('a') || '').toLowerCase();
         const b = (p.get('b') || '').toLowerCase();
-        if (ALPHA.includes(a) && ALPHA.includes(b) && a !== b) {
-          chA = a; chB = b;
+        const c = (p.get('c') || '').toLowerCase();
+        if (ALPHA.includes(a) && ALPHA.includes(b) && ALPHA.includes(c) && new Set([a, b, c]).size === 3) {
+          chA = a; chB = b; chC = c;
           show('pg-game');
           startGame();
           return;
@@ -1661,26 +1694,28 @@
     function initSetup() {
       const sA = document.getElementById('selA');
       const sB = document.getElementById('selB');
+      const sC = document.getElementById('selC');
       ALPHA.forEach(c => {
         sA.innerHTML += `<option value="${c}">${c}</option>`;
         sB.innerHTML += `<option value="${c}">${c}</option>`;
+        sC.innerHTML += `<option value="${c}">${c}</option>`;
       });
-      sA.value = 'e'; sB.value = 'ê';
+      sA.value = 'e'; sB.value = 'ê'; sC.value = 'a';
 
       document.querySelectorAll('.pair-b').forEach(b => {
         b.addEventListener('click', () => {
-          sA.value = b.dataset.a; sB.value = b.dataset.b;
+          sA.value = b.dataset.a; sB.value = b.dataset.b; sC.value = b.dataset.c;
           document.getElementById('err').textContent = '';
         });
       });
 
       document.getElementById('btn-create').addEventListener('click', () => {
-        const a = sA.value, b = sB.value, er = document.getElementById('err');
-        if (!a || !b) { er.textContent = '⚠️ Vui lòng chọn cả 2 chữ cái.'; return; }
-        if (a === b) { er.textContent = '⚠️ Hai chữ phải khác nhau!'; return; }
+        const a = sA.value, b = sB.value, c = sC.value, er = document.getElementById('err');
+        if (!a || !b || !c) { er.textContent = '⚠️ Vui lòng chọn cả 3 chữ cái.'; return; }
+        if (new Set([a, b, c]).size < 3) { er.textContent = '⚠️ Ba chữ phải khác nhau!'; return; }
         er.textContent = '';
         const base = location.href.split('?')[0];
-        const url = `${base}?mode=game&a=${encodeURIComponent(a)}&b=${encodeURIComponent(b)}`;
+        const url = `${base}?mode=game&a=${encodeURIComponent(a)}&b=${encodeURIComponent(b)}&c=${encodeURIComponent(c)}`;
         document.getElementById('link-url').textContent = url;
         document.getElementById('link-box').classList.add('show');
         
@@ -1701,7 +1736,7 @@
 
       document.getElementById('btn-go').addEventListener('click', () => {
         resumeAudio();
-        chA = sA.value; chB = sB.value;
+        chA = sA.value; chB = sB.value; chC = sC.value;
         show('pg-game'); startGame();
       });
     }
@@ -1712,9 +1747,10 @@
       curRound = 0; totalStars = 0; rData = [];
 
       document.getElementById('g-title').innerHTML =
-        `TÌM ĐÚNG <span class="hl">${chA}</span> – <span class="hl">${chB}</span>`;
+        `TÌM ĐÚNG <span class="hl">${chA}</span>, <span class="hl">${chB}</span> VÀ <span class="hl">${chC}</span>`;
       document.getElementById('bsk-a-lbl').textContent = chA;
       document.getElementById('bsk-b-lbl').textContent = chB;
+      document.getElementById('bsk-c-lbl').textContent = chC;
       document.getElementById('s-tot').textContent = TOTAL_ROUNDS * 3;
       updStars();
       buildProg();
@@ -1749,29 +1785,35 @@
     // ======================== VÒNG ========================
     function startRound() {
       if (curRound >= TOTAL_ROUNDS) { endGame(); return; }
-      rActive = true; rErrors = 0; rErrDet = []; colA = 0; colB = 0;
+      rActive = true; rErrors = 0; rErrDet = []; colA = 0; colB = 0; colC = 0;
       updProg(); updBskCnt();
 
       const tgt = TARGET_MIN + Math.floor(Math.random() * (TARGET_MAX - TARGET_MIN + 1));
-      const nA = Math.ceil(tgt / 2), nB = tgt - nA;
+      const p1 = Math.floor(tgt / 3);
+      const p2 = Math.floor((tgt - p1) / 2);
+      const p3 = tgt - p1 - p2;
+      const arr = [p1, p2, p3]; shuffle(arr);
+      const nA = arr[0], nB = arr[1], nC = arr[2];
       const tiles = [];
 
       for (let i = 0; i < nA; i++)
         tiles.push({ letter: chA, type: 'a', color: rndColor(), id: 't' + Date.now() + Math.random() });
       for (let i = 0; i < nB; i++)
         tiles.push({ letter: chB, type: 'b', color: rndColor(), id: 't' + Date.now() + Math.random() });
+      for (let i = 0; i < nC; i++)
+        tiles.push({ letter: chC, type: 'c', color: rndColor(), id: 't' + Date.now() + Math.random() });
 
-      const dist = ALPHA.filter(c => c !== chA && c !== chB);
+      const dist = ALPHA.filter(c => c !== chA && c !== chB && c !== chC);
       for (let i = 0; i < DISTRACTOR_COUNT; i++)
         tiles.push({ letter: dist[Math.floor(Math.random() * dist.length)], type: 'd', color: rndColor(), id: 't' + Date.now() + Math.random() });
 
       shuffle(tiles);
-      rRemain = nA + nB;
+      rRemain = nA + nB + nC;
 
       document.getElementById('s-tot').textContent = rRemain;
       document.getElementById('s-cur').textContent = 0;
 
-      rData[curRound] = { tiles: tiles.slice(), errors: 0, errorDetails: [], targetCount: nA + nB, stars: 0 };
+      rData[curRound] = { tiles: tiles.slice(), errors: 0, errorDetails: [], targetCount: rRemain, stars: 0 };
       renderGrid(tiles);
       setMascot('normal');
     }
@@ -1835,18 +1877,24 @@
 
       const bA = document.getElementById('bsk-a');
       const bB = document.getElementById('bsk-b');
+      const bC = document.getElementById('bsk-c');
       const rA = bA.getBoundingClientRect();
       const rB = bB.getBoundingClientRect();
+      const rC = bC.getBoundingClientRect();
       const cx = e.clientX, cy = e.clientY;
-      const onA = inRect(cx, cy, rA), onB = inRect(cx, cy, rB);
+      const onA = inRect(cx, cy, rA), onB = inRect(cx, cy, rB), onC = inRect(cx, cy, rC);
       const tp = dragEl.dataset.type, lt = dragEl.dataset.letter;
 
-      if (onA || onB) {
+      if (onA || onB || onC) {
         let ok = false;
-        if (onA && tp === 'a') { ok = true; colA++; }
-        else if (onB && tp === 'b') { ok = true; colB++; }
-        if (ok) onOK(dragEl, onA ? bA : bB);
-        else onNG(dragEl, onA ? bA : bB, lt, onA ? chA : chB);
+        let droppedOn = null;
+        let expectedLetter = '';
+        if (onA) { droppedOn = bA; expectedLetter = chA; if (tp === 'a') { ok = true; colA++; } }
+        else if (onB) { droppedOn = bB; expectedLetter = chB; if (tp === 'b') { ok = true; colB++; } }
+        else if (onC) { droppedOn = bC; expectedLetter = chC; if (tp === 'c') { ok = true; colC++; } }
+        
+        if (ok) onOK(dragEl, droppedOn);
+        else onNG(dragEl, droppedOn, lt, expectedLetter);
       } else {
         backToGrid(dragEl);
       }
@@ -1856,13 +1904,15 @@
 
     function inRect(x, y, r) { return x >= r.left - 18 && x <= r.right + 18 && y >= r.top - 18 && y <= r.bottom + 18; }
     function hlBsk(x, y) {
-      const a = document.getElementById('bsk-a'), b = document.getElementById('bsk-b');
+      const a = document.getElementById('bsk-a'), b = document.getElementById('bsk-b'), c = document.getElementById('bsk-c');
       a.classList.toggle('hl', inRect(x, y, a.getBoundingClientRect()));
       b.classList.toggle('hl', inRect(x, y, b.getBoundingClientRect()));
+      c.classList.toggle('hl', inRect(x, y, c.getBoundingClientRect()));
     }
     function clrHL() {
       document.getElementById('bsk-a').classList.remove('hl');
       document.getElementById('bsk-b').classList.remove('hl');
+      document.getElementById('bsk-c').classList.remove('hl');
     }
 
     // ======================== ĐÚNG / SAI ========================
@@ -1922,6 +1972,7 @@
     function updBskCnt() {
       document.getElementById('bsk-a-cnt').textContent = colA > 0 ? colA + ' chữ' : '';
       document.getElementById('bsk-b-cnt').textContent = colB > 0 ? colB + ' chữ' : '';
+      document.getElementById('bsk-c-cnt').textContent = colC > 0 ? colC + ' chữ' : '';
     }
 
     // ======================== KẾT THÚC VÒNG ========================
