@@ -1202,12 +1202,13 @@
       for (let i = 0; i < rRemainC; i++)
         tilesList.push({ letter: chC, type: 'c' });
 
-      // Bóng nhiễu: 1 chữ gây nhiễu
+      // Bóng nhiễu: Chọn ngẫu nhiên vài chữ gây nhiễu để tăng độ đa dạng
       const distractors = ALPHA.filter(c => c !== chA && c !== chB && c !== chC);
-      const distractorChar = distractors[Math.floor(Math.random() * distractors.length)];
-      const numDistract = Math.max(1, Math.round(totalTarget * DISTRACTOR_RATIO));
-      for (let i = 0; i < numDistract; i++)
+      const numDistract = Math.max(4, Math.round(totalTarget * 0.3)); // Tăng lượng bóng nhiễu lên 30% tổng số
+      for (let i = 0; i < numDistract; i++) {
+        const distractorChar = distractors[Math.floor(Math.random() * distractors.length)];
         tilesList.push({ letter: distractorChar, type: 'd' });
+      }
 
       shuffle(tilesList);
 
