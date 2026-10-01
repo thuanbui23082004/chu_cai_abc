@@ -66,12 +66,13 @@
     html,
     body {
       width: 100%;
-      min-height: 100vh;
+      height: 100%;
       font-family: var(--font);
       color: var(--text-dark);
       overflow-x: hidden;
       -webkit-user-select: none;
       user-select: none;
+      touch-action: none;
     }
 
     body {
@@ -224,12 +225,12 @@
     .page {
       position: relative;
       z-index: 1;
-      min-height: 100vh;
+      /* min-height: 100vh; */
       display: none;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 30px 24px;
+      padding: 20px 24px;
       /* PADDING CHUNG */
     }
 
@@ -1682,6 +1683,12 @@
         const url = `${base}?mode=game&a=${encodeURIComponent(a)}&b=${encodeURIComponent(b)}`;
         document.getElementById('link-url').textContent = url;
         document.getElementById('link-box').classList.add('show');
+        
+        // Ẩn phần cặp chữ hay nhầm trên điện thoại để tiết kiệm không gian
+        if (window.innerWidth <= 768) {
+          const pairSec = document.querySelector('.pair-sec');
+          if (pairSec) pairSec.style.display = 'none';
+        }
       });
 
       document.getElementById('btn-copy').addEventListener('click', () => {
